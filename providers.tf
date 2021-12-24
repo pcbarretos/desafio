@@ -1,4 +1,10 @@
 terraform {
+  backend "remote" {
+    organization = "Terraform-CI-CD"
+    workspaces {
+      name = "Desafio"
+    }
+  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -7,13 +13,6 @@ terraform {
     tls = {
       source  = "hashicorp/tls"
       version = "3.1.0"
-    }
-    backend "remote" {
-      organization = "Terraform-CI-CD"
-
-      workspaces {
-        name = "Desafio"
-      }
     }
   }
 }
