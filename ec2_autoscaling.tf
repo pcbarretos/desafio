@@ -2,7 +2,7 @@
 data "aws_ami" "ubuntu" {
   owners      = ["amazon"]
   most_recent = true
-  name_regex  = "ubuntu"
+  name_regex  = "Amazon Linux"
 
   filter {
     name   = "architecture"

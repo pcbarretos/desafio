@@ -18,6 +18,6 @@ variable "instance_type" {
 
 variable "key_pair_name" {
   type        = string
-  default     = "mykey"
-  description = "Chave Gerada"
+  default     = "vockey"
+  description = "Chave"
 }

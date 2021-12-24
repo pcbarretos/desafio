@@ -1,10 +1,6 @@
 #!/bin/bash
-sudo apt update -y
-sudo apt install nginx wget curl zip unzip docker docker-compose -y
-
-
-wget https://www.free-css.com/assets/files/free-css-templates/download/page273/bakery.zip
-unzip -d bakery.zip /usr/share/nginx/html
-
-sudo systemctl enable nginx
-sudo systemctl start nginx
+sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+sudo yum install docker-ce
+sudo systemctl start docker
+sudo docker run --rm -p 80:80 nginx
