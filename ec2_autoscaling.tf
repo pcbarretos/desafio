@@ -11,16 +11,16 @@ data "aws_ami" "ubuntu" {
 }
 
 # Cria par de Chaves
-resource "tls_private_key" "key_pc" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-# Cria par de Chaves
-resource "aws_key_pair" "generated_key" {
-  key_name   = var.key_pair_name
-  public_key = tls_private_key.key_pc.public_key_openssh
-}
+#resource "tls_private_key" "key_pc" {
+#  algorithm = "RSA"
+#  rsa_bits  = 4096
+#}
+#
+## Cria par de Chaves
+#resource "aws_key_pair" "generated_key" {
+#  key_name   = var.key_pair_name
+#  public_key = tls_private_key.key_pc.public_key_openssh
+#}
 
 # Cria template Autoscaling
 resource "aws_launch_template" "tpl" {
@@ -28,7 +28,7 @@ resource "aws_launch_template" "tpl" {
   image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_pair_name
-  user_data     = filebase64("setup.sh")
+  user_data     = filebase64("data.sh")
 
   monitoring {
     enabled = true
@@ -39,6 +39,7 @@ resource "aws_launch_template" "tpl" {
     delete_on_termination       = true
     security_groups             = [aws_security_group.autoscaling_sg.id]
   }
+  tags = merge(local.common_tags, {Name = "Autoscaling Ec2"})
 }
 
 # Cria Grupo Autoscaling

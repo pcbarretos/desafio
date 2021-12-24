@@ -1,10 +1,10 @@
 terraform {
-  backend "remote" {
-    organization = "Terraform-CI-CD"
-    workspaces {
-      name = "Desafio"
-    }
-  }
+  #  backend "remote" {
+  #    organization = "Terraform-CI-CD"
+  #    workspaces {
+  #      name = "Desafio"
+  #    }
+  #  }
   required_providers {
     aws = {
       source  = "hashicorp/aws"
