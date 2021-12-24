@@ -6,7 +6,7 @@ resource "aws_instance" "ec2-2" {
   subnet_id              = aws_subnet.subnet_pc["pvt_a"].id
   availability_zone      = "${var.aws_region}a"
   key_name               = var.key_pair_name
-  user_data     = <<-EOF
+  user_data              = <<-EOF
               #!/bin/bash
               mkdir -p home/project
               sudo apt update -y
@@ -28,7 +28,7 @@ resource "aws_instance" "ec2-1" {
   subnet_id              = aws_subnet.subnet_pc["pvt_b"].id
   availability_zone      = "${var.aws_region}b"
   key_name               = var.key_pair_name
-  user_data     = <<-EOF
+  user_data              = <<-EOF
               #!/bin/bash
               mkdir -p home/project
               sudo apt update -y
