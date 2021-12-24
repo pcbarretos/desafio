@@ -28,7 +28,7 @@ resource "aws_launch_template" "tpl" {
   image_id      = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = var.key_pair_name
-  user_data              = filebase64("setup.sh")
+  user_data     = filebase64("setup.sh")
 
   monitoring {
     enabled = true
